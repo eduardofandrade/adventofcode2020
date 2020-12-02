@@ -27,11 +27,11 @@ class Day02(stream: InputStream) {
             val line = s.nextLine()
             if (line != "") {
                 val tokens = line.split(" ")
-                val occurrencesRange = tokens[0].split("-")
+                val range = tokens[0].split("-")
                 l.add(
                         PasswordPolicyChecker(
-                                Integer.valueOf(occurrencesRange[0]),
-                                Integer.valueOf(occurrencesRange[1]),
+                                Integer.valueOf(range[0]),
+                                Integer.valueOf(range[1]),
                                 tokens[1][0],
                                 tokens[2]
                         )
@@ -44,21 +44,21 @@ class Day02(stream: InputStream) {
     }
 
     private class PasswordPolicyChecker(
-            val minOccurrences: Int,
-            val maxOccurrences: Int,
+            val min: Int,
+            val max: Int,
             val letter: Char,
-            val password: String) {
+            val passwd: String) {
 
         fun validOld(): Boolean {
-            val occurrences = password.toCharArray()
+            val occurrences = passwd.toCharArray()
                     .filter { c -> c == this.letter }
                     .count()
-            return occurrences in minOccurrences..maxOccurrences;
+            return occurrences in min..max;
         }
 
         fun validNew(): Boolean {
-            return (password[minOccurrences - 1] == letter && password[maxOccurrences - 1] != letter) ||
-                    (password[minOccurrences - 1] != letter && password[maxOccurrences - 1] == letter)
+            return (passwd[min - 1] == letter && passwd[max - 1] != letter) ||
+                    (passwd[min - 1] != letter && passwd[max - 1] == letter)
         }
     }
 
