@@ -30,13 +30,12 @@ class Day01Solver(stream: InputStream) : Solver {
         val l = processedInput
         for (i in l.indices) {
             for (j in 0 until i) {
-                if (l[i] + l[j] < 2020) {
-                    if (l.contains(2020 - l[i] - l[j])) {
-                        return l[i] * l[j] * (2020 - l[i] - l[j])
-                    }
+                if (l[i] + l[j] < 2020 && l.contains(2020 - l[i] - l[j])) {
+                    return l[i] * l[j] * (2020 - l[i] - l[j])
                 }
             }
         }
         return 0
     }
+
 }
