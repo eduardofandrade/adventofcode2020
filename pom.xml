@@ -5,8 +5,8 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.jetbrains.kotlin.examples</groupId>
-    <artifactId>hello-world</artifactId>
+    <groupId>eduardofandrade</groupId>
+    <artifactId>adventofcode2020</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

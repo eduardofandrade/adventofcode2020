@@ -17,8 +17,7 @@ class Day03SolverTest {
                 ".#........#\n" +
                 "#.##...#...\n" +
                 "#...##....#\n" +
-                ".#..#...#.#\n" +
-                ""
+                ".#..#...#.#"
 
         val solver = Day03Solver(exampleInput.byteInputStream())
         Assert.assertEquals(7, solver.getFirstSolution())
