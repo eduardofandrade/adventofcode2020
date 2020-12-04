@@ -18,23 +18,19 @@ class Day01Solver(stream: InputStream) : Solver {
     }
 
     override fun getFirstSolution(): Long {
-        val l = processedInput
-        for (i in l.indices) {
-            if (l.contains(2020 - l[i])) {
-                return l[i] * (2020 - l[i])
+        for (n in processedInput) {
+            if (processedInput.contains(2020 - n)) {
+                return n * (2020 - n)
             }
         }
         return 0
     }
 
     override fun getSecondSolution(): Long {
-        val l = processedInput
-        for (i in l.indices) {
-            for (j in 0 until i) {
-                if (l[i] + l[j] < 2020) {
-                    if (l.contains(2020 - l[i] - l[j])) {
-                        return l[i] * l[j] * (2020 - l[i] - l[j])
-                    }
+        for (n in processedInput) {
+            for (m in 0 until n) {
+                if (n + m < 2020 && processedInput.contains(2020 - n - m)) {
+                    return n * m * (2020 - n - m)
                 }
             }
         }
