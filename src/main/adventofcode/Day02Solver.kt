@@ -1,34 +1,23 @@
 package adventofcode
 
 import java.io.InputStream
-import java.util.*
+import java.util.stream.Collectors
 
 class Day02Solver(stream: InputStream) : Solver {
 
-    private val processedInput: ArrayList<PasswordPolicyChecker>
+    private val processedInput: List<PasswordPolicyChecker>
 
     init {
         processedInput = processInput(stream)
     }
 
-    private fun processInput(stream: InputStream): ArrayList<PasswordPolicyChecker> {
-        val lines = stream.bufferedReader().readLines()
-
-        val l = arrayListOf<PasswordPolicyChecker>()
-        for (line in lines) {
-            val tokens = line.split(" ")
-            val range = tokens[0].split("-")
-            l.add(
-                    PasswordPolicyChecker(
-                            range[0].toInt(),
-                            range[1].toInt(),
-                            tokens[1][0],
-                            tokens[2]
-                    )
-            )
-
-        }
-        return l
+    private fun processInput(stream: InputStream): List<PasswordPolicyChecker> {
+        return stream.bufferedReader().readLines().stream()
+                .map { line ->
+                    val tokens = line.split(" ")
+                    val range = tokens[0].split("-")
+                    PasswordPolicyChecker(range[0].toInt(), range[1].toInt(), tokens[1][0], tokens[2])
+                }.collect(Collectors.toList())
     }
 
     override fun getFirstSolution(): Long {

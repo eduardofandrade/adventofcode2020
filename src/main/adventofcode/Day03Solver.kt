@@ -14,19 +14,16 @@ class Day03Solver(stream: InputStream) : Solver {
     }
 
     private fun processInput(stream: InputStream) {
-        val lines = stream.bufferedReader().readLines()
-
-        var numLines = 0
-        for (line in lines) {
-            for ((index, value) in line.withIndex()) {
-                if (value == '#') {
-                    trees.add(numLines.toString() + "_" + index.toString())
+        stream.bufferedReader().readLines().stream()
+                .forEach { line ->
+                    for ((index, value) in line.withIndex()) {
+                        if (value == '#') {
+                            trees.add(numRows.toString() + "_" + index.toString())
+                        }
+                    }
+                    numRows++
+                    if (numCols < line.length) numCols = line.length
                 }
-            }
-            if (numCols == 0) numCols = line.length
-            numLines++
-        }
-        numRows = numLines
     }
 
     private fun travel(s: State, right: Int, down: Int) {
