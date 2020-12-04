@@ -17,7 +17,7 @@ class Day01Solver(stream: InputStream) : Solver {
                 .collect(Collectors.toList())
     }
 
-    override fun getFirstSolution(): Long {
+    override fun getPartOneSolution(): Long {
         for (n in processedInput) {
             if (processedInput.contains(2020 - n)) {
                 return n * (2020 - n)
@@ -26,7 +26,7 @@ class Day01Solver(stream: InputStream) : Solver {
         return 0
     }
 
-    override fun getSecondSolution(): Long {
+    override fun getPartTwoSolution(): Long {
         val l = processedInput
         for (i in l.indices) {
             for (j in 0 until i) {

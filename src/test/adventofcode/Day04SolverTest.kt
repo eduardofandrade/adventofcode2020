@@ -6,7 +6,7 @@ import org.junit.Test
 class Day04SolverTest {
 
     @Test
-    fun validateExamplePart1() {
+    fun validateExampleForPartOne() {
         val exampleInput = "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd\n" +
                 "byr:1937 iyr:2017 cid:147 hgt:183cm\n" +
                 "\n" +
@@ -22,11 +22,11 @@ class Day04SolverTest {
                 "iyr:2011 ecl:brn hgt:59in"
 
         val solver = Day04Solver(exampleInput.byteInputStream())
-        Assert.assertEquals(2, solver.getFirstSolution())
+        Assert.assertEquals(2, solver.getPartOneSolution())
     }
 
     @Test
-    fun validateExamplePart2() {
+    fun validateExampleForPartTwo() {
         val invalidPassports = "eyr:1972 cid:100\n" +
                 "hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926\n" +
                 "\n" +
@@ -54,8 +54,8 @@ class Day04SolverTest {
                 "\n" +
                 "iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719"
 
-        Assert.assertEquals(0, Day04Solver(invalidPassports.byteInputStream()).getSecondSolution())
-        Assert.assertEquals(4, Day04Solver(validPassports.byteInputStream()).getSecondSolution())
+        Assert.assertEquals(0, Day04Solver(invalidPassports.byteInputStream()).getPartTwoSolution())
+        Assert.assertEquals(4, Day04Solver(validPassports.byteInputStream()).getPartTwoSolution())
     }
 
     @Test
@@ -64,8 +64,8 @@ class Day04SolverTest {
         val solver = Day04Solver(
                 {}.javaClass.getResourceAsStream("day04Input.txt")
         )
-        println("Solution1: " + solver.getFirstSolution())
-        println("Solution2: " + solver.getSecondSolution())
+        println("Part one solution: " + solver.getPartOneSolution())
+        println("Part two solution: " + solver.getPartTwoSolution())
     }
 
 }

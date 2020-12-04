@@ -20,11 +20,11 @@ class Day02Solver(stream: InputStream) : Solver {
                 }.collect(Collectors.toList())
     }
 
-    override fun getFirstSolution(): Long {
+    override fun getPartOneSolution(): Long {
         return processedInput.stream().filter { p -> p.validOld() }.count()
     }
 
-    override fun getSecondSolution(): Long {
+    override fun getPartTwoSolution(): Long {
         return processedInput.stream().filter { p -> p.validNew() }.count()
     }
 

@@ -12,8 +12,8 @@ class Day02SolverTest {
                 "2-9 c: ccccccccc"
 
         val solver = Day02Solver(exampleInput.byteInputStream())
-        Assert.assertEquals(2, solver.getFirstSolution())
-        Assert.assertEquals(1, solver.getSecondSolution())
+        Assert.assertEquals(2, solver.getPartOneSolution())
+        Assert.assertEquals(1, solver.getPartTwoSolution())
     }
 
     @Test
@@ -22,8 +22,8 @@ class Day02SolverTest {
         val solver = Day02Solver(
                 {}.javaClass.getResourceAsStream("day02Input.txt")
         )
-        println("Solution1: " + solver.getFirstSolution())
-        println("Solution2: " + solver.getSecondSolution())
+        println("Part one solution: " + solver.getPartOneSolution())
+        println("Part two solution: " + solver.getPartTwoSolution())
     }
 
 }

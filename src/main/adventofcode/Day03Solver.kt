@@ -40,11 +40,11 @@ class Day03Solver(stream: InputStream) : Solver {
         return s.numTreesFound
     }
 
-    override fun getFirstSolution(): Long {
+    override fun getPartOneSolution(): Long {
         return getNumTreesForSlope(3, 1)
     }
 
-    override fun getSecondSolution(): Long {
+    override fun getPartTwoSolution(): Long {
         return getNumTreesForSlope(1, 1) *
                 getNumTreesForSlope(3, 1) *
                 getNumTreesForSlope(5, 1) *

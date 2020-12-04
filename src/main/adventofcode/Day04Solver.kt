@@ -30,11 +30,11 @@ class Day04Solver(stream: InputStream) : Solver {
     }
 
 
-    override fun getFirstSolution(): Long {
+    override fun getPartOneSolution(): Long {
         return passports.stream().filter { p -> p.isLooselyValid() }.count()
     }
 
-    override fun getSecondSolution(): Long {
+    override fun getPartTwoSolution(): Long {
         return passports.stream().filter { p -> p.isStrictlyValid() }.count()
     }
 
