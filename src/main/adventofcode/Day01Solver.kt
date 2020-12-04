@@ -3,31 +3,25 @@ package adventofcode
 import java.io.InputStream
 import java.util.*
 
-class Day01(stream: InputStream) {
+class Day01Solver(stream: InputStream) : Solver {
 
-    private val processedInput: ArrayList<Int>
+    private val processedInput: ArrayList<Long>
 
     init {
         processedInput = processInput(stream)
     }
 
-    private fun processInput(stream: InputStream): ArrayList<Int> {
-        val l = arrayListOf<Int>()
+    private fun processInput(stream: InputStream): ArrayList<Long> {
+        val lines = stream.bufferedReader().readLines()
 
-        val s = Scanner(stream)
-        while (s.hasNextLine()) {
-            val i = s.nextLine()
-            if (i != "") {
-                l.add(Integer.valueOf(i))
-            } else {
-                break
-            }
+        val l = arrayListOf<Long>()
+        for (line in lines) {
+            l.add(line.toLong())
         }
-
         return l
     }
 
-    fun getFirstSolution(): Int {
+    override fun getFirstSolution(): Long {
         val l = processedInput
         for (i in 0 until l.size) {
             if (l.contains(2020 - l[i])) {
@@ -37,7 +31,7 @@ class Day01(stream: InputStream) {
         return 0
     }
 
-    fun getSecondSolution(): Int {
+    override fun getSecondSolution(): Long {
         val l = processedInput
         for (i in 0 until l.size) {
             for (j in 0 until i) {

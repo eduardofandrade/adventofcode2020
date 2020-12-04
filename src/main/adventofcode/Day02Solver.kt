@@ -3,7 +3,7 @@ package adventofcode
 import java.io.InputStream
 import java.util.*
 
-class Day02(stream: InputStream) {
+class Day02Solver(stream: InputStream) : Solver {
 
     private val processedInput: ArrayList<PasswordPolicyChecker>
 
@@ -11,36 +11,32 @@ class Day02(stream: InputStream) {
         processedInput = processInput(stream)
     }
 
-    fun getFirstSolution(): Int {
-        return processedInput.stream().filter { p -> p.validOld() }.count().toInt()
-    }
-
-    fun getSecondSolution(): Int {
-        return processedInput.stream().filter { p -> p.validNew() }.count().toInt()
-    }
-
     private fun processInput(stream: InputStream): ArrayList<PasswordPolicyChecker> {
-        val l = arrayListOf<PasswordPolicyChecker>()
+        val lines = stream.bufferedReader().readLines()
 
-        val s = Scanner(stream)
-        while (s.hasNextLine()) {
-            val line = s.nextLine()
-            if (line != "") {
-                val tokens = line.split(" ")
-                val range = tokens[0].split("-")
-                l.add(
-                        PasswordPolicyChecker(
-                                Integer.valueOf(range[0]),
-                                Integer.valueOf(range[1]),
-                                tokens[1][0],
-                                tokens[2]
-                        )
-                )
-            } else {
-                break
-            }
+        val l = arrayListOf<PasswordPolicyChecker>()
+        for (line in lines) {
+            val tokens = line.split(" ")
+            val range = tokens[0].split("-")
+            l.add(
+                    PasswordPolicyChecker(
+                            range[0].toInt(),
+                            range[1].toInt(),
+                            tokens[1][0],
+                            tokens[2]
+                    )
+            )
+
         }
         return l
+    }
+
+    override fun getFirstSolution(): Long {
+        return processedInput.stream().filter { p -> p.validOld() }.count()
+    }
+
+    override fun getSecondSolution(): Long {
+        return processedInput.stream().filter { p -> p.validNew() }.count()
     }
 
     private class PasswordPolicyChecker(
