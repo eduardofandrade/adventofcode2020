@@ -64,8 +64,8 @@ class Day04SolverTest {
         val solver = Day04Solver(
                 {}.javaClass.getResourceAsStream("day04Input.txt")
         )
-        println("Part one solution: " + solver.getPartOneSolution())
-        println("Part two solution: " + solver.getPartTwoSolution())
+        println("Part one solution: ${solver.getPartOneSolution()}")
+        println("Part two solution: ${solver.getPartTwoSolution()}")
     }
 
 }

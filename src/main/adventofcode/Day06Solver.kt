@@ -2,7 +2,6 @@ package adventofcode
 
 import java.io.InputStream
 import java.util.stream.Collectors
-import kotlin.streams.toList
 
 class Day06Solver(stream: InputStream) : Solver {
 
@@ -27,11 +26,11 @@ class Day06Solver(stream: InputStream) : Solver {
     }
 
     override fun getPartOneSolution(): Long {
-        return groups.stream().map { g -> g.getNumberOfUniqueAnswers() }.toList().sum().toLong()
+        return groups.stream().map { g -> g.getNumberOfUniqueAnswers() }.collect(Collectors.toList()).sum().toLong()
     }
 
     override fun getPartTwoSolution(): Long {
-        return groups.stream().map { g -> g.getNumberOfUniqueAnswersThatEveryoneGave() }.toList().sum().toLong()
+        return groups.stream().map { g -> g.getNumberOfUniqueAnswersThatEveryoneGave() }.collect(Collectors.toList()).sum().toLong()
     }
 
     private class Group {
@@ -42,7 +41,7 @@ class Day06Solver(stream: InputStream) : Solver {
         }
 
         fun getNumberOfUniqueAnswersThatEveryoneGave(): Int {
-            val answersPerPerson = persons.stream().map { p -> p.answers }.filter { l -> l.isNotEmpty() }.toList()
+            val answersPerPerson = persons.stream().map { p -> p.answers }.filter { l -> l.isNotEmpty() }.collect(Collectors.toList())
             var answersEveryoneGave: MutableSet<Char>? = if (answersPerPerson.isNotEmpty()) answersPerPerson[0] else mutableSetOf()
             for (answers in answersPerPerson) {
                 answersEveryoneGave!!.retainAll(answers)
