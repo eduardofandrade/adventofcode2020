@@ -71,6 +71,7 @@ class Day08Solver(stream: InputStream) : Solver {
         fun run(instructions: ArrayList<Instruction>) {
             var index = 0
             while (index < instructions.size && !infiniteLoopDetected(index)) {
+                executedInstructions.add(index)
                 index = executeInstruction(instructions[index], index)
             }
         }
@@ -89,10 +90,8 @@ class Day08Solver(stream: InputStream) : Solver {
 
         private fun infiniteLoopDetected(i: Int): Boolean {
             infiniteLoopDetected = executedInstructions.contains(i)
-            if (!infiniteLoopDetected) {
-                executedInstructions.add(i)
-            }
             return infiniteLoopDetected
         }
     }
+
 }
