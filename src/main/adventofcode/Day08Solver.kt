@@ -27,7 +27,7 @@ class Day08Solver(stream: InputStream) : Solver {
     }
 
     override fun getPartTwoSolution(): Long {
-        val indexesToModify = instructions.filter { i -> i.operation in EnumSet.of(Operation.ACC, Operation.JMP) }.map { i -> i.index }
+        val indexesToModify = instructions.filter { i -> i.operation in EnumSet.of(Operation.NOP, Operation.JMP) }.map { i -> i.index }
         return runWithModifications(instructions, indexesToModify).accumulator
     }
 
