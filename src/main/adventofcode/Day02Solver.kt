@@ -38,7 +38,7 @@ class Day02Solver(stream: InputStream) : Solver {
             val occurrences = passwd.toCharArray()
                     .filter { c -> c == this.letter }
                     .count()
-            return occurrences in min..max;
+            return occurrences in min..max
         }
 
         fun validNew(): Boolean {

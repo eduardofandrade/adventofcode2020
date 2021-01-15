@@ -97,16 +97,12 @@ class Day11Solver(stream: InputStream) : Solver {
     }
 
     private fun getVisibleSeats(state: List<ArrayList<Char>>, row: Int, column: Int): List<Char> {
-        val visibleSeats = arrayListOf<Char>()
-        visibleSeats.add(getVisibleSeat(state, row, column, -1, -1))
-        visibleSeats.add(getVisibleSeat(state, row, column, 0, -1))
-        visibleSeats.add(getVisibleSeat(state, row, column, 1, -1))
-        visibleSeats.add(getVisibleSeat(state, row, column, -1, 0))
-        visibleSeats.add(getVisibleSeat(state, row, column, 1, 0))
-        visibleSeats.add(getVisibleSeat(state, row, column, -1, 1))
-        visibleSeats.add(getVisibleSeat(state, row, column, 0, 1))
-        visibleSeats.add(getVisibleSeat(state, row, column, 1, 1))
-        return visibleSeats.filter { s -> s != ' ' }
+        val coords = listOf(
+                Pair(-1, -1), Pair(0, -1), Pair(1, -1),
+                Pair(-1, 0), Pair(1, 0), Pair(-1, 1),
+                Pair(0, 1), Pair(1, 1)
+        )
+        return coords.map { p -> getVisibleSeat(state, row, column, p.first, p.second) }.filter { s -> s != ' ' }
     }
 
     private fun getVisibleSeat(state: List<ArrayList<Char>>, row: Int, column: Int, xDirection: Int, yDirection: Int): Char {

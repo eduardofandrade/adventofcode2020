@@ -53,6 +53,7 @@ class Day08Solver(stream: InputStream) : Solver {
         when (instructions[index].operation) {
             Operation.JMP -> instructions[index].operation = Operation.NOP
             Operation.NOP -> instructions[index].operation = Operation.JMP
+            else -> {} // do nothing
         }
     }
 
