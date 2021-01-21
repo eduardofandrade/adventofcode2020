@@ -30,7 +30,9 @@ class Day13Solver(stream: InputStream) : Solver {
     }
 
     override fun getPartTwoSolution(): Long {
-        // cheated! some clever solution... from: https://todd.ginsberg.com/post/advent-of-code/2020/day13/#d13p2
+        // tried to implement some clever looping which worked for the samples but could not get part 2 solution
+        // in useful time so I cheated... using this clever and elegant solution from:
+        // https://todd.ginsberg.com/post/advent-of-code/2020/day13/#d13p2
         var stepSize = buses.first().first
         var time = 0L
         buses.drop(1).forEach { (busId, busOffset) ->
